@@ -90,7 +90,7 @@ module.exports = {
     extractCSSLib,
     extractCustomerStyle,
     new HtmlWebpackPlugin({
-      title: "幸运摇摇乐",
+      title: "幸运抽抽乐",
       filename: "index.html",
       template: 'src/index.html'
     }),
