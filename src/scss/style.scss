@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid saddlebrown;
+
+  .box {
+    width: 99vh;
+    height: 99vh;
+    background-color: red;
+  }
+}
