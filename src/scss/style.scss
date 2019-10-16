@@ -28,5 +28,44 @@
       width: 28vh;
       height: auto;
     }
+
+    .crazy_number_box {
+      position: absolute;
+      top: 46vh;
+      left: 23vh;
+      width: 28vh;
+      height: 10vh;
+      border: 2px solid red;
+    }
+
+    .button-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      top: 65vh;
+      width: 36vh;
+      height: 10vh;
+
+      .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 10vh;
+        height: 6vh;
+      }
+    }
+
+    .results {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 75vh;
+      width: 36vh;
+      height: 11vh;
+      color: white;
+      font-size: 24px;
+    }
   }
 }
