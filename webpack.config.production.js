@@ -86,7 +86,7 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['docs']),
     extractCSSLib,
     extractCustomerStyle,
     new HtmlWebpackPlugin({

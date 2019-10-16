@@ -61,4 +61,4 @@ typings/
 node_modules/
 .vscode/
 .idea/
-dist/
+docs/
