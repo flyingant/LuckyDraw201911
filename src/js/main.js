@@ -74,6 +74,7 @@ $(document).ready(() => {
         } else {
           // start button pressed
           $('.tongsouwuqi').hide();
+          $('.crazy_number_box').show();
           $('.start_btn').hide();
           $('.pause_btn').show();
           start = true;
