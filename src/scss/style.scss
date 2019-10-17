@@ -30,12 +30,18 @@
     }
 
     .crazy_number_box {
+      font-family: hopa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: absolute;
       top: 46vh;
       left: 23vh;
       width: 28vh;
       height: 10vh;
-      border: 2px solid red;
+      font-size: 64px;
+      color: goldenrod;
+      letter-spacing: 6px;
     }
 
     .button-group {
@@ -43,16 +49,37 @@
       align-items: center;
       justify-content: space-between;
       position: absolute;
-      top: 65vh;
-      width: 36vh;
+      top: 64vh;
+      width: 32vh;
       height: 10vh;
 
       .button {
+        position: relative;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
         justify-content: center;
-        width: 10vh;
-        height: 6vh;
+      }
+
+      .zhongjiangrenshu {
+        img {
+          width: 8vh;
+          height: auto;
+        }
+      }
+
+      .kaishi {
+        img {
+          width: 12vh;
+          height: auto;
+        }
+      }
+
+      .retry {
+        img {
+          width: 8vh;
+          height: auto;
+        }
       }
     }
 

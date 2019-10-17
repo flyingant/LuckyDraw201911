@@ -4,29 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= htmlWebpackPlugin.options.title %></title>
+  <script src="assets/odometer.min.js"></script>
 </head>
 <body>
 <div class="container">
   <div class="box">
-    <image class="bg" src="assets/bg.jpg"></image>
-    <image class="chouchoule" src="assets/chouchoule.png"></image>
-    <image class="tongsouwuqi" src="assets/tongsouwuqi.png"></image>
+    <img class="bg" src="assets/bg.jpg"></img>
+    <img class="chouchoule" src="assets/chouchoule.png"></img>
+    <img class="tongsouwuqi" src="assets/tongsouwuqi.png"></img>
     <div class="crazy_number_box">
-
+      <div class="odometer" id="odometer"></div>
     </div>
     <div class="button-group">
       <div class="button zhongjiangrenshu">
+        <img class="mode_1_btn" src="assets/bt_1.png"/>
+        <img class="mode_5_btn hidden" src="assets/bt_5.png"/>
+        <img class="mode_btn_press hidden" src="assets/bt_5-1_press.png"/>
         <label>中奖人数</label>
       </div>
       <div class="button kaishi">
-        <label>开始</label>
+        <img class="start_btn" src="assets/bt_start.png"/>
+        <img class="pause_btn hidden" src="assets/bt_pause.png"/>
+        <img class="start_press_btn hidden" src="assets/bt_start_press.png"/>
       </div>
-      <div class="button kaishi">
+      <div class="button retry">
+        <img class="retry_btn" src="assets/bt_retry.png"/>
+        <img class="retry_press_btn hidden" src="assets/bt_retry_press.png"/>
         <label>再来一次</label>
       </div>
     </div>
     <div class="results">
-      中奖公告
+      ABCDEFG123568
     </div>
   </div>
 </div>
