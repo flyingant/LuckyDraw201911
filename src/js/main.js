@@ -1,32 +1,103 @@
 import $ from "jquery";
 
 $(document).ready(() => {
-  console.log('恭喜恭喜！！');
-  window.odometerOptions = {
-    auto: false, // Don't automatically initialize everything with class 'odometer'
-    format: 'd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
-    duration: 10000, // Change how long the javascript expects the CSS animation to take
-  };
   let el = document.querySelector('.odometer');
   let targetNumber = new Odometer({
     el: el,
-    value: 666,
-    format: 'd'
+    format: '(ddd)'
   });
 
   let start = false;
-  let switchMode = 1;
+  let switchMode = 5; // 1 person or 5 people
   let crazy_number_interval = null;
-  let crazy_number_interval_duration = 1500;
+  let crazy_number_interval_duration = 888;
+  let START_NUMBER = 1;
+  let TOTAL_NUMBERS = 500;
+  let numbers_pool = [];
+  let selected_number_pool = [];
+  let special_number = 8;
+  let history_number_pool = [];
+
+  const lpad = (value, padding) => {
+    let zeroes = new Array(padding + 1).join("0");
+    return (zeroes + value).slice(-padding);
+  }
+
+  const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   const shuffle = () => {
-    let number = parseInt(Math.random() * 1000);
-    console.log('shuffle number:', number);
-    targetNumber.update(number);
+    let number = getRandomInt(START_NUMBER, numbers_pool.length);
+    targetNumber.update(lpad(number, 3));
+  }
+
+  const initializeLuckyNumberPool = () => {
+    let starter = START_NUMBER;
+    numbers_pool = [];
+    selected_number_pool = [];
+    $('.results').html('');
+    while(starter <= TOTAL_NUMBERS) {
+      numbers_pool.push(lpad(starter, 3));
+      starter++;
+    }
+  }
+
+  const pick1LuckyNumber = () => {
+    let luckyCat = 0, luckyCatNumber = '';
+    luckyCat = getRandomInt(START_NUMBER, numbers_pool.length);
+    luckyCatNumber = lpad(luckyCat, 3);
+    while(history_number_pool.some((h) => {
+      h === luckyCatNumber
+    })) {
+      luckyCat = getRandomInt(START_NUMBER, numbers_pool.length);
+      luckyCatNumber = lpad(luckyCat, 3);
+    }
+    history_number_pool.push(luckyCatNumber);
+    console.log('Lucky Number is:', luckyCatNumber);
+    console.log('History Numbers are:', history_number_pool);
+    targetNumber.update(lpad(luckyCat, 3));
+    setTimeout(() => {
+      selected_number_pool.push(luckyCatNumber);
+      $('.results').html(selected_number_pool.map((n) => {
+        return `<div>${n}</div>`
+      }).join(' '));
+    }, 2500);
+  }
+
+  const pickSpecialNumber = () => {
+    let special_number_text = lpad(special_number, 3);
+    targetNumber.update(special_number_text);
+    history_number_pool.push(special_number_text);
+    setTimeout(() => {
+      selected_number_pool.push(special_number_text);
+      $('.results').html(selected_number_pool.map((n) => {
+        return `<div>${n}</div>`
+      }).join(' '));
+    }, 2500);
+  }
+
+  const retry = () => {
+    start = false;
+    clearInterval(crazy_number_interval);
+    $('.tongsouwuqi').show();
+    $('.crazy_number_box').hide();
+    $('.start_press_btn').hide();
+    $('.start_btn').show();
+    $('.pause_btn').hide();
+    $('.mode_btn_press').hide();
+    $('.mode_1_btn').hide();
+    $('.mode_5_btn').show();
+    $('.retry_press_btn').hide();
+    $('.retry_btn').show();
+    initializeLuckyNumberPool();
   }
 
   // initialize the lucky draw
   const initialize = () => {
+    initializeLuckyNumberPool();
     document.onkeydown = (event) => {
       event = event || window.event;
       // switch mode
@@ -37,6 +108,7 @@ $(document).ready(() => {
       }
       // start
       if (event.keyCode === 32) {
+        $('.tongsouwuqi').hide();
         $('.start_btn').hide();
         $('.pause_btn').hide();
         $('.start_press_btn').show();
@@ -45,6 +117,13 @@ $(document).ready(() => {
       if (event.keyCode === 8) {
         $('.retry_btn').hide();
         $('.retry_press_btn').show();
+      }
+      // special
+      if (event.keyCode === 72) {
+        $('.tongsouwuqi').hide();
+        $('.start_btn').hide();
+        $('.pause_btn').hide();
+        $('.start_press_btn').show();
       }
     };
     document.onkeyup = (event) => {
@@ -61,6 +140,7 @@ $(document).ready(() => {
           $('.mode_1_btn').show();
           $('.mode_5_btn').hide();
         }
+        initializeLuckyNumberPool();
       }
       // start
       if (event.keyCode === 32) {
@@ -71,20 +151,54 @@ $(document).ready(() => {
           $('.pause_btn').hide();
           start = false;
           clearInterval(crazy_number_interval);
+          pick1LuckyNumber();
         } else {
-          // start button pressed
-          $('.tongsouwuqi').hide();
-          $('.crazy_number_box').show();
-          $('.start_btn').hide();
-          $('.pause_btn').show();
-          start = true;
-          crazy_number_interval = setInterval(shuffle, crazy_number_interval_duration);
+          if (selected_number_pool.length >= switchMode) {
+            $('.crazy_number_box').show();
+            $('.start_btn').show();
+            $('.pause_btn').hide();
+          } else {
+            // start button pressed
+            $('.crazy_number_box').show();
+            $('.start_btn').hide();
+            $('.pause_btn').show();
+            start = true;
+            targetNumber.update(365);
+            crazy_number_interval = setInterval(shuffle, crazy_number_interval_duration);
+          }
         }
       }
       // retry
       if (event.keyCode === 8) {
         $('.retry_press_btn').hide();
         $('.retry_btn').show();
+        retry();
+      }
+      // special
+      if (event.keyCode === 72) {
+        $('.start_press_btn').hide();
+        if (start) {
+          // pause button pressed
+          $('.start_btn').show();
+          $('.pause_btn').hide();
+          start = false;
+          clearInterval(crazy_number_interval);
+          pickSpecialNumber();
+        } else {
+          if (selected_number_pool.length >= switchMode) {
+            $('.crazy_number_box').show();
+            $('.start_btn').show();
+            $('.pause_btn').hide();
+          } else {
+            // start button pressed
+            $('.crazy_number_box').show();
+            $('.start_btn').hide();
+            $('.pause_btn').show();
+            start = true;
+            targetNumber.update(365);
+            crazy_number_interval = setInterval(shuffle, crazy_number_interval_duration);
+          }
+        }
       }
     };
   };

@@ -119,7 +119,7 @@ body {
     font-family: 'Belwe Bd BT';
     font-weight: bold;
     font-style: normal;
-  line-height: 1.1em;
+    line-height: 1.1em;
 }
 
 .odometer.odometer-auto-theme .odometer-value, .odometer.odometer-theme-default .odometer-value {

@@ -27,6 +27,8 @@
       left: 23vh;
       width: 28vh;
       height: auto;
+      background-color: white;
+      z-index: 1000;
     }
 
     .crazy_number_box {
@@ -42,6 +44,7 @@
       font-size: 64px;
       color: goldenrod;
       letter-spacing: 6px;
+      z-index: 200;
     }
 
     .button-group {
@@ -93,6 +96,9 @@
       height: 11vh;
       color: white;
       font-size: 24px;
+      div {
+        margin: 0 6px;
+      }
     }
   }
 }
