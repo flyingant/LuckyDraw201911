@@ -1,9 +1,10 @@
 body {
   margin: 0;
   padding: 0;
-    font-family: 'Belwe Bd BT';
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'Belwe Bd BT';
+  font-weight: bold;
+  font-style: normal;
+  background-color: #000000;
 }
 
 .hidden {

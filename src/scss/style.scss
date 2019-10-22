@@ -62,6 +62,12 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
+
+        label {
+          img {
+            margin-top: 12px;
+          }
+        }
       }
 
       .zhongjiangrenshu {
