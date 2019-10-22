@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>幸运抽抽乐</title>
+  <script src="assets/odometer.js"></script>
+  <link href="/lib.css" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="box">
+    <img class="bg" src="assets/bg.jpg"></img>
+    <img class="chouchoule" src="assets/chouchoule.png"></img>
+    <img class="tongsouwuqi" src="assets/tongsouwuqi.png"></img>
+    <div class="crazy_number_box hidden">
+      <div class="odometer" id="odometer"></div>
+    </div>
+    <div class="button-group">
+      <div class="button zhongjiangrenshu">
+        <img class="mode_1_btn hidden" src="assets/bt_1.png"/>
+        <img class="mode_5_btn " src="assets/bt_5.png"/>
+        <img class="mode_btn_press hidden" src="assets/bt_5-1_press.png"/>
+        <label>
+          <img src="assets/numberofluckypeople.png"/>
+        </label>
+      </div>
+      <div class="button kaishi">
+        <img class="start_btn" src="assets/bt_start.png"/>
+        <img class="pause_btn hidden" src="assets/bt_pause.png"/>
+        <img class="start_press_btn hidden" src="assets/bt_start_press.png"/>
+      </div>
+      <div class="button retry">
+        <img class="retry_btn" src="assets/bt_retry.png"/>
+        <img class="retry_press_btn hidden" src="assets/bt_retry_press.png"/>
+        <label>
+          <img src="assets/onemoretime.png"/>
+        </label>
+      </div>
+    </div>
+    <div class="results"></div>
+  </div>
+</div>
+<script src="/bundle.min.js" type="text/javascript"></script>
+</body>
+</html>
