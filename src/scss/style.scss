@@ -5,8 +5,8 @@
 
   .box {
     position: relative;
-    width: 60vh;
-    height: 99vh;
+    width: 54.5vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,10 +24,9 @@
     .tongsouwuqi {
       position: absolute;
       top: 38.5vh;
-      left: 16vh;
+      left: 13vh;
       width: 28vh;
       height: auto;
-      background-color: white;
       z-index: 1000;
     }
 
@@ -38,7 +37,7 @@
       justify-content: center;
       position: absolute;
       top: 36.5vh;
-      left: 16vh;
+      left: 13vh;
       width: 28vh;
       height: 10vh;
       font-size: 64px;
@@ -105,6 +104,13 @@
       div {
         margin: 0 6px;
       }
+    }
+
+    .zhongjianggonggao {
+      position: absolute;
+      top: 65vh;
+      width: 16vh;
+      height: 11vh;
     }
   }
 }

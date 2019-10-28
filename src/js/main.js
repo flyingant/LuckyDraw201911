@@ -38,7 +38,10 @@ $(document).ready(() => {
     let starter = START_NUMBER;
     numbers_pool = [];
     selected_number_pool = [];
+    $('.tongsouwuqi').show();
+    $('.crazy_number_box').hide();
     $('.results').html('');
+    $('.zhongjianggonggao').show();
     while(starter <= TOTAL_NUMBERS) {
       numbers_pool.push(lpad(starter, 3));
       starter++;
@@ -61,6 +64,7 @@ $(document).ready(() => {
     targetNumber.update(lpad(luckyCat, 3));
     setTimeout(() => {
       selected_number_pool.push(luckyCatNumber);
+      $('.zhongjianggonggao').hide();
       $('.results').html(selected_number_pool.map((n) => {
         return `<div>${n}</div>`
       }).join(' '));
@@ -73,6 +77,7 @@ $(document).ready(() => {
     history_number_pool.push(special_number_text);
     setTimeout(() => {
       selected_number_pool.push(special_number_text);
+      $('.zhongjianggonggao').hide();
       $('.results').html(selected_number_pool.map((n) => {
         return `<div>${n}</div>`
       }).join(' '));
@@ -105,6 +110,7 @@ $(document).ready(() => {
         $('.mode_1_btn').hide();
         $('.mode_5_btn').hide();
         $('.mode_btn_press').show();
+        $('.zhongjianggonggao').show();
       }
       // start
       if (event.keyCode === 32) {
