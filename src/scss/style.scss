@@ -5,7 +5,7 @@
 
   .box {
     position: relative;
-    width: 74vh;
+    width: 60vh;
     height: 99vh;
     display: flex;
     align-items: center;
@@ -23,8 +23,8 @@
     }
     .tongsouwuqi {
       position: absolute;
-      top: 47.5vh;
-      left: 23vh;
+      top: 38.5vh;
+      left: 16vh;
       width: 28vh;
       height: auto;
       background-color: white;
@@ -37,8 +37,8 @@
       align-items: center;
       justify-content: center;
       position: absolute;
-      top: 46vh;
-      left: 23vh;
+      top: 36.5vh;
+      left: 16vh;
       width: 28vh;
       height: 10vh;
       font-size: 64px;
@@ -52,7 +52,7 @@
       align-items: center;
       justify-content: space-between;
       position: absolute;
-      top: 64vh;
+      top: 54vh;
       width: 32vh;
       height: 10vh;
 
@@ -97,7 +97,7 @@
       align-items: center;
       justify-content: center;
       position: absolute;
-      top: 75vh;
+      top: 65vh;
       width: 36vh;
       height: 11vh;
       color: white;

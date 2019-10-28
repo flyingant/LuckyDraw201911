@@ -12,10 +12,10 @@ $(document).ready(() => {
   let crazy_number_interval = null;
   let crazy_number_interval_duration = 888;
   let START_NUMBER = 1;
-  let TOTAL_NUMBERS = 500;
+  let TOTAL_NUMBERS = 460;
   let numbers_pool = [];
   let selected_number_pool = [];
-  let special_number = 8;
+  let special_number = 133;
   let history_number_pool = [];
 
   const lpad = (value, padding) => {
