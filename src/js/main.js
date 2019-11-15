@@ -16,6 +16,7 @@ $(document).ready(() => {
   let numbers_pool = [];
   let selected_number_pool = [];
   let special_number = 133;
+  let another_special_number = 80;
   let history_number_pool = [];
 
   const lpad = (value, padding) => {
@@ -84,6 +85,19 @@ $(document).ready(() => {
     }, 2500);
   }
 
+  const pickAnotherSpecialNumber = () => {
+    let special_number_text = lpad(another_special_number, 3);
+    targetNumber.update(special_number_text);
+    history_number_pool.push(special_number_text);
+    setTimeout(() => {
+      selected_number_pool.push(special_number_text);
+      $('.zhongjianggonggao').hide();
+      $('.results').html(selected_number_pool.map((n) => {
+        return `<div>${n}</div>`
+      }).join(' '));
+    }, 2500);
+  }
+
   const retry = () => {
     start = false;
     clearInterval(crazy_number_interval);
@@ -125,7 +139,7 @@ $(document).ready(() => {
         $('.retry_press_btn').show();
       }
       // special
-      if (event.keyCode === 72) {
+      if (event.keyCode === 72 || event.keyCode === 51) {
         $('.tongsouwuqi').hide();
         $('.start_btn').hide();
         $('.pause_btn').hide();
@@ -190,6 +204,33 @@ $(document).ready(() => {
           start = false;
           clearInterval(crazy_number_interval);
           pickSpecialNumber();
+        } else {
+          if (selected_number_pool.length >= switchMode) {
+            $('.crazy_number_box').show();
+            $('.start_btn').show();
+            $('.pause_btn').hide();
+          } else {
+            // start button pressed
+            $('.crazy_number_box').show();
+            $('.start_btn').hide();
+            $('.pause_btn').show();
+            start = true;
+            targetNumber.update(365);
+            crazy_number_interval = setInterval(shuffle, crazy_number_interval_duration);
+          }
+        }
+      }
+
+      // another special
+      if (event.keyCode === 51) {
+        $('.start_press_btn').hide();
+        if (start) {
+          // pause button pressed
+          $('.start_btn').show();
+          $('.pause_btn').hide();
+          start = false;
+          clearInterval(crazy_number_interval);
+          pickAnotherSpecialNumber();
         } else {
           if (selected_number_pool.length >= switchMode) {
             $('.crazy_number_box').show();
